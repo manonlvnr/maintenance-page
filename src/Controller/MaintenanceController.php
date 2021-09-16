@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class MaintenanceController {
-    function maintenance(){
-        return new Response("maintenance");
+final class MaintenanceController extends AbstractController{
+    public function __invoke(){
+        return $this->render('home.html.twig');
     }
 }

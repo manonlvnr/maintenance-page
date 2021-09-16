@@ -1,3 +1,3 @@
 maintenance:
     path: /home
-    controller: App\Controller\MaintenanceController::maintenance
+    controller: App\Controller\MaintenanceController
