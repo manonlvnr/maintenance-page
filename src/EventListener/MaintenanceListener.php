@@ -4,28 +4,27 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
-class MaintenanceListener extends AbstractController
+use Twig\Environment;
+
+class MaintenanceListener
 {
     public bool $maintenance;
 
-    public function __construct(bool $maintenance)
+    public function __construct(bool $maintenance, Environment $twig)
     {
-        $this->maintenance=$maintenance;
+        $this->maintenance = $maintenance;
+        $this->twig = $twig;
     }
 
-    public function onKernelRequest(RequestEvent $event, bool $maintenance)
+    public function onKernelRequest(RequestEvent $event)
     {
-        $maintenance = $this->maintenance;
-
-        if ($maintenance === true) {
-            $template = $this->renderView('maintenance.html.twig');
+        if ($this->maintenance === true) {
             $event->setResponse(
                 new Response(
-                    $template,
+                    $this->twig->render('maintenance.html.twig'),
                     Response::HTTP_SERVICE_UNAVAILABLE
                 )
             ); 
