@@ -1,0 +1,21 @@
+body{
+    background-color:#e3e3e3;
+}
+
+h1{
+    font-family: system-ui;
+    color: #ff5500;
+}
+
+p{
+    font-family: system-ui;
+    font-size: x-large;
+    color:#ff5500;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
