@@ -1,22 +1,30 @@
 <?php
+
+declare(strict_types=1);
+
 namespace App\EventListener;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
-class MaintenanceListener
+class MaintenanceListener extends AbstractController
 {
-    public $maintenance;
+    public bool $maintenance;
 
-    public function __construct($maintenance){
-        $this->maintenance=$maintenance["status"];
+    public function __construct(bool $maintenance)
+    {
+        $this->maintenance=$maintenance;
     }
 
-    public function onKernelRequest(RequestEvent $event){
-        $maintenance = $this->maintenance ? $this->maintenance : false;
-        if ($maintenance === true){
+    public function onKernelRequest(RequestEvent $event, bool $maintenance)
+    {
+        $maintenance = $this->maintenance;
+        
+        if ($maintenance === true) {
+            $template = $this->renderView('maintenance.html.twig');
             $event->setResponse(
-                new Response('En maintenance',
+                new Response($template,
                 Response::HTTP_SERVICE_UNAVAILABLE)); 
             $event->stopPropagation();
         }
