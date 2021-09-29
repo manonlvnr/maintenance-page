@@ -5,16 +5,16 @@
 
 
 {% block body %}
-    <div id="content">
-        <div class="texts">    
+    <div class="content">
+        <div>    
             {% trans %}
-            <h1>Oops... Le site est actuellement en maintenance</h1>
-            <p>Merci de revenir plus tard</p>
+            <h1>Oops... Le site est actuellement en maintenance.</h1>
+            <p>Merci de revenir plus tard !</p>
             {% endtrans %}        
         </div>
         
-        <div class="image">
-            <img src="{{ asset('images/stockvault-a-software-engineer-programming-at-the-desk177182.jpg')}}" alt="dessin" width="500">
+        <div>
+            <img src="{{ asset('images/stockvault-a-software-engineer-programming-at-the-desk177182.jpg')}}" alt="dessin" width="700">
         </div>
     </div>
 {% endblock %}
