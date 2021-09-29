@@ -20,12 +20,15 @@ class MaintenanceListener extends AbstractController
     public function onKernelRequest(RequestEvent $event, bool $maintenance)
     {
         $maintenance = $this->maintenance;
-        
+
         if ($maintenance === true) {
             $template = $this->renderView('maintenance.html.twig');
             $event->setResponse(
-                new Response($template,
-                Response::HTTP_SERVICE_UNAVAILABLE)); 
+                new Response(
+                    $template,
+                    Response::HTTP_SERVICE_UNAVAILABLE
+                )
+            ); 
             $event->stopPropagation();
         }
     }
