@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% trans %}Error 503: Service Unavaible{% endtrans %}{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="css/styles.css" type="text/css">{% endblock %}
+
+
+{% block body %}
+    <div id="content">
+        <div class="texts">    
+            {% trans %}
+            <h1>Oops... Le site est actuellement en maintenance</h1>
+            <p>Merci de revenir plus tard</p>
+            {% endtrans %}        
+        </div>
+        
+        <div class="image">
+            <img src="{{ asset('images/stockvault-a-software-engineer-programming-at-the-desk177182.jpg')}}" alt="dessin" width="500">
+        </div>
+    </div>
+{% endblock %}
+
